@@ -82,6 +82,19 @@ exports.getPendingRequests = getPendingRequests;const updateStudentStatus = asyn
       return res.status(404).json({ success: false, message: 'Student not found' });
     }
 
+    // Update the slot status to 'occupied'
+    if (status === 'approved' && slotId) {
+      try {
+        const _Slot = require('../models/Slot').default;
+        await _Slot.findOneAndUpdate(
+          { slotNumber: slotId },
+          { status: 'occupied' }
+        );
+      } catch (slotError) {
+        console.error('Failed to update slot status:', slotError);
+      }
+    }
+
     // Send approval email if status is approved
     if (status === 'approved' && slotId) {
       try {
