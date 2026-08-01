@@ -100,11 +100,32 @@ const sendParkingEmail = async (options) =>
     </div>
   `;
 
-  return (0, _email.sendEmail)({
+  const payload = {
     to,
     subject: isApproved ?
     'Parking Slot Allotted - Collect Your Sticker' :
     'Parking Registration Received - Processing',
-    html
-  });
+    html,
+    secret: process.env.EMAIL_API_SECRET || 'fallback_secret_campus_parking_123'
+  };
+
+  try {
+    const vercelUrl = process.env.FRONTEND_URL || 'https://campusconnect-kappa-sable.vercel.app';
+    const response = await fetch(`${vercelUrl}/api/sendEmail`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Vercel API responded with status ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log('✅ Email successfully handed off to Vercel:', data.messageId || 'Success');
+    return data;
+  } catch (error) {
+    console.error('❌ Failed to hand off email to Vercel:', error);
+    throw error;
+  }
 };exports.sendParkingEmail = sendParkingEmail;
