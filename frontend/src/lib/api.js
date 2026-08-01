@@ -1,7 +1,7 @@
 // API Configuration - Centralized API base URL
 // In development, Vite proxy handles /api routes
-// In production, change to your actual backend URL
-export const API_BASE_URL = '/api';
+// In production, Vite uses the VITE_API_URL environment variable
+export const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 // Helper function for authenticated API calls
 export const apiCall = async (endpoint, options = {}) => {
