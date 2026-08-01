@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 174 20% 98%;
+    --foreground: 174 50% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 174 50% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 174 50% 10%;
+
+    /* Primary: rgb(0, 71, 64) -> hsl(174, 100%, 14%) */
+    --primary: 174 100% 14%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 174 30% 90%;
+    --secondary-foreground: 174 100% 14%;
+
+    --muted: 174 20% 94%;
+    --muted-foreground: 174 10% 40%;
+
+    --accent: 174 40% 90%;
+    --accent-foreground: 174 100% 14%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 152 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 174 20% 86%;
+    --input: 174 20% 86%;
+    --ring: 174 100% 14%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 174 100% 14%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 174 40% 90%;
+    --sidebar-primary-foreground: 174 100% 14%;
+    --sidebar-accent: 174 80% 20%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 174 60% 20%;
+    --sidebar-ring: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 174 50% 5%;
+    --foreground: 174 20% 90%;
+
+    --card: 174 50% 8%;
+    --card-foreground: 174 20% 90%;
+
+    --popover: 174 50% 8%;
+    --popover-foreground: 174 20% 90%;
+
+    /* Primary: lighter variant for dark mode visibility */
+    --primary: 174 80% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 174 40% 15%;
+    --secondary-foreground: 174 60% 70%;
+
+    --muted: 174 30% 15%;
+    --muted-foreground: 174 15% 60%;
+
+    --accent: 174 40% 20%;
+    --accent-foreground: 174 80% 70%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 174 40% 15%;
+    --input: 174 40% 15%;
+    --ring: 174 80% 40%;
+
+    --sidebar-background: 174 60% 6%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 174 80% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 174 40% 12%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 174 40% 12%;
+    --sidebar-ring: 174 80% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
